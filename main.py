@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 from simon import SimonCipher
 import os.path
 
