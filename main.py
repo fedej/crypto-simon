@@ -80,14 +80,14 @@ while True:
         keyEncrypt = int(input("Key en HEX para encriptar: "),16)
         break
     except (KeyError, ValueError) as e:
-        print('Key no válida, debe ser un número en Hexadecimal')
+        print('Key no válida, debe ser un numero en Hexadecimal')
 
 while True:
     try:
         keyDecrypt = int(input("Key en HEX para desencriptar: "),16)
         break
     except (KeyError, ValueError) as e:
-        print('Key no válida, debe ser un número en Hexadecimal')
+        print('Key no valida, debe ser un numero en Hexadecimal')
 
 while True:
     bmp_original = input("Archivo BMP: ")
