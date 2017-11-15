@@ -45,7 +45,7 @@ __valid_setups = {32: {64: 32},
                   96: {96: 52, 144: 54},
                   128: {128: 68, 192: 69, 256: 72}}
 
-__valid_modes = ['ECB', 'CTR', 'CBC', 'PCBC', 'CFB', 'OFB']
+__valid_modes = ['ECB','CBC','CFB','OFB']
 
 key = 0x1f1e1d1c1b1a191817161514131211100f0e0d0c0b0a09080706050403020100
 init = 0x123456789ABCDEF0
