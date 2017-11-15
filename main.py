@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 from simon import SimonCipher
 import os.path
+import shutil
 
 def perform(data, function):
     frame = bytearray()
@@ -13,11 +14,11 @@ def perform(data, function):
     return frame
 
 def encrypt(data):
-    cipher = SimonCipher(key, key_size, block_size, mode, init, counter)
+    cipher = SimonCipher(keyEncrypt, key_size, block_size, mode, init, counter)
     return perform(data, cipher.encrypt)
 
 def decrypt(data):
-    cipher = SimonCipher(key, key_size, block_size, mode, init, counter)
+    cipher = SimonCipher(keyDecrypt, key_size, block_size, mode, init, counter)
     return perform(data, cipher.decrypt)
 
 def operate_file(from_file, function, to_file):
@@ -75,13 +76,31 @@ while True:
         print('Por favor elija uno de los siguientes modos:', __valid_modes)
 
 while True:
+    try:
+        keyEncrypt = int(input("Key en HEX para encriptar: "),16)
+        break
+    except (KeyError, ValueError) as e:
+        print('Key no válida, debe ser un número en Hexadecimal')
+
+while True:
+    try:
+        keyDecrypt = int(input("Key en HEX para desencriptar: "),16)
+        break
+    except (KeyError, ValueError) as e:
+        print('Key no válida, debe ser un número en Hexadecimal')
+
+while True:
     bmp_original = input("Archivo BMP: ")
     if os.path.isfile(bmp_original):
         break
     print('Por favor elija un archivo valido')
 
-bmp_encriptado= './encrypted.bmp'
-bmp_desencriptado= './decrypted.bmp'
+bmp_encriptado= './salida/encrypted.bmp'
+bmp_desencriptado= './salida/decrypted.bmp'
 
+shutil.copy(bmp_original, "./salida/original.bmp")
 operate_file(bmp_original, encrypt, bmp_encriptado)
+print('Encriptado satisfactorio')
 operate_file(bmp_encriptado, decrypt, bmp_desencriptado)
+print('Desencriptado satisfactorio')
+
